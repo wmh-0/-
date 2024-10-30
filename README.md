@@ -1,1 +1,1 @@
-# DaguiziTogether
+# 微信比赛管理系统
