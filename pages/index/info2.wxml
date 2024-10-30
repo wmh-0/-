@@ -1,0 +1,9 @@
+<scroll-view class="content-info" scroll-y="true" >
+	<view class="mlist" wx:for="{{match}}" wx:key="id" bindtap="handleGoDetail" data-id="{{item.id}}">
+    <view>
+      		<view class="mlist1">{{item.name}}</view>
+      		<view class="mlist2">{{item.startmonth}}月{{item.startday}}日进行</view>
+		</view>
+		<text>比赛详情 >></text>
+	 </view>
+</scroll-view>

@@ -1,0 +1,75 @@
+
+<scroll-view class="content-info" scroll-y="true" >
+	<view	class="topline">
+		<view class="infoimg">
+			<button class="avatar-wrapper" bindtap="handleGoLogin">
+				<image src="{{avatarUrl}}" class="avatar" wx:if="{{avatarUrl!==null}}"/>
+				<text>点此登入</text>
+			</button>  
+
+		</view>
+		<view wx:if="{{logindata}}">
+			<text class="toplinetext" style="color: rgba(255, 255, 255, 0.8);">昵称：{{logindata.name}}</text>
+			<button class="outlogin" bindtap="outlogin">退出登入</button>
+		</view>
+	</view>
+	<view class="content-info-list">
+		<view class="list-title">已参与赛事</view>	
+		
+		<block  wx:for="{{match}}" wx:key="id"  wx:for-item="itemName">
+			<view	class="mlist" wx:for="{{itemName.joined}}" wx:key="index"	wx:if="{{item === logindata.name}}"bindtap="handleGoDetail"	data-id="{{itemName.id}}">
+					<view>
+          	<view class="mlist1">{{itemName.name}}</view>
+						<view class="mlist2">{{itemName.startmonth}}月{{itemName.startday}}日进行</view>
+					</view>
+					<text class="">比赛详情 >></text>
+			</view>
+			
+		</block>
+		<view class="list-title">已发布赛事</view>
+			<view class="mlist" wx:for="{{match}}" wx:key="id" wx:if="{{item.manager == logindata.name}}"bindtap="handleGoDetail"data-id="{{item.id}}">
+    		<view>
+      		<view class="mlist1">{{item.name}}</view>
+      		<view class="mlist2">{{item.startmonth}}月{{item.startday}}日进行</view>
+				</view>
+				<text class="">比赛详情 >></text>
+ 			</view>
+	</view>
+		
+</scroll-view>
+<!-- 悬浮框 -->
+<area class="movable-area" bindtap="toggleDialog">
+    	<view class="movable-view" direction="all">
+			<text>发布</text>
+			<text>赛事</text>
+    	</view>
+</area>  
+<!-- 弹窗 -->
+<view class="dialog {{ showDialog ? 'dialog__show' : '' }}">
+		<view class="dialog__mask" bindtap="toggleDialog" />
+  	<view class="dialog__container">
+    <view style='padding-top:50rpx;width: 90%;padding-left: 30px;'>
+			<view class="dialogtitle">赛事名称：</view>
+			<view class="inputname">
+			<input type="name" bindinput="onInput"  data-type="name" placeholder="请输入名称"/>
+			</view>
+			<view class="dialogtitle">赛事日期：</view>
+			<view class="inputdate">
+			<input type="month" bindinput="onInput" data-type="startmonth" />月
+			<input type="day" bindinput="onInput" data-type="startday"/>日
+			</view>
+			<view class="dialogtitle">赛事地址：</view>
+			<view class="inputname">
+			<input type="add" bindinput="onInput"	 data-type="address"	placeholder="请输入地址"/>
+			</view>
+			<view class="dialogtitle">详情信息：</view>
+			<view class="inputname">
+			<textarea type="infor" style="height: 100rpx;width: 100%;border-radius: 10rpx;border:solid 1px gray; "	bindinput="onInput"	 data-type="information"	placeholder="请输入具体内容"		maxlength="1000"/>
+			</view>
+			<view class="dialogbutton">
+			<button style='margin-right: 5px'bindtap="addItemToList">确认发布</button>
+			<button bindtap="toggleDialog">取消</button>
+		</view>
+		</view>
+		</view>	
+</view>

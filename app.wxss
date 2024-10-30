@@ -1,0 +1,13 @@
+view,
+button,
+navigator,
+audio,
+image {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+view {
+  font-size: 28rpx;
+  color:black;
+}

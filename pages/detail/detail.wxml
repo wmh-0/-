@@ -1,0 +1,25 @@
+<view	wx:if="{{match}}">
+<view class="Title">
+		{{match.name}}
+</view>
+	<scroll-view class="content-info" scroll-y="true" >
+	<view class="address">
+		<text style="font-weight: bolder;">参赛地点：</text>{{match.address}}
+	</view>
+	<view class="message">
+		<text	style="font-weight: bolder;">具体信息：</text>{{match.information}}
+	</view>
+	<view class="joined">
+		发布者：
+		<view>{{match.manager}}</view>
+	</view>
+	<view class="joined">
+		参赛者：
+		<view	wx:for="{{match.joined}}"	wx:key="index">{{item}}</view>
+	</view>
+	<view style="margin-top: 50px;"></view>
+</scroll-view>
+	<button class="button" bind:tap="join">
+		立即报名
+	</button>
+</view>

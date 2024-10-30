@@ -1,0 +1,8 @@
+<view class="content">
+<button class="avatar-wrapper" open-type="chooseAvatar"bindchooseavatar="onChooseAvatar">
+  <image class="avatar" src="{{avatarUrl}}"></image>
+</button>
+↑点击获取头像↑
+<input type="nickname" class="nickname" bindinput="handleInputNickname" placeholder="请输入昵称" />
+<button class="blogin" bind:tap="handleGoIndex"	data-type="name">登入或注册</button>
+</view>
